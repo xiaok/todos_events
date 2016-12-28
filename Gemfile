@@ -44,6 +44,7 @@ group :development, :test do
   gem 'database_cleaner', '1.5.1'
   gem 'rails-controller-testing'
   gem 'rubocop'
+  gem 'faker'
 end
 
 group :development do
