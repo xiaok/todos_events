@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228032938) do
+ActiveRecord::Schema.define(version: 20161228033057) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer  "project_id"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20161228032938) do
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_comments_on_todo_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "eventable_type"
+    t.integer  "eventable_id"
+    t.text     "extra"
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
+    t.index ["project_id"], name: "index_events_on_project_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
