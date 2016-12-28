@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
   has_many :users, through: :accesses
-  has_many :todo_lists
+  has_many :todos
   belongs_to :team
 end
