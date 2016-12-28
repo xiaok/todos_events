@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TowerTodoEvent</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>TowerTodoEvent</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'  %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= body_classes %>">
+  <div class="container">
+    <div id="page-wrapper">
+      <%= yield %>
+    </div>
+    <!-- /#page-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</body>
 </html>
