@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-      return redirect_to root_url
+      return redirect_to '/'
     end
   end
 end
