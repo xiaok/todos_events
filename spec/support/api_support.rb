@@ -2,10 +2,10 @@ module APISupport
   extend ActiveSupport::Concern
 
   def prepare_data
-    @user = User.create(name: 'yixin', avatar_url: Faker::Avatar.image)
-    @team = Team.create(name: 'team')
-    @project1 = @team.projects.create(name: 'project1')
-    @project2 = @team.projects.create(name: 'project2')
+    @user = create(:user)
+    @team = create(:team)
+    @project1 = create(:project)
+    @project2 = create(:project)
     @access = Access.create(user: @user, project: @project1, role: 'admin')
     @todo1 = @project1.todos.create(name: '早上吃早饭')
     @todo2 = @project1.todos.create(name: '中午吃午饭', due_at: Time.now.to_i)

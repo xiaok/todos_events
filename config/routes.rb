@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     post 'complete', to: 'todos#complete'
   end
+
+  resources :teams, only: [:show] do
+    resources :events, only: [:index]
+  end
 end

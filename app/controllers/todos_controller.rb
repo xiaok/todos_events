@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
   def update
     respond_to do |format|
-      if @todo.update(todo_params)
+      if TodoUpdateService.new(@todo, todo_params, current_user).process
         format.html { redirect_to @todo.project }
       else
         format.html { render action: 'edit' }
@@ -21,6 +21,7 @@ class TodosController < ApplicationController
     @todo.project = @project
 
     if @todo.save
+      @todo.create_event('todo.create', current_user)
       redirect_to project_path(@project)
     else
       format.html { render action: 'new' }
@@ -33,6 +34,7 @@ class TodosController < ApplicationController
 
   def destroy
     @todo.destroy
+    @todo.create_event('todo.destroy', current_user)
   end
 
   # 这里提及一下，因为需要记录是谁，在什么时候关闭了任务，应当有一个表记录相关信息, 用 event 表也可以
@@ -41,13 +43,13 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:todo_id])
     return if @todo.is_complete == true
     @todo.update_attribute(:is_complete, true)
-    # TODO:  增加 event 逻辑
+    @todo.create_event('todo.complete', current_user)
   end
 
   private
 
   def set_todo
-    @todo = Todo.find(params[:id])
+    @todo = Todo.with_deleted.find(params[:id])
   end
 
   def todo_params

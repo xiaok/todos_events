@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
     @comment = @todo.comments.new comment_params
     @comment.user = current_user
     @comment.save
+
+    @comment.create_event('comment.create')
   end
 
   private

@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'bower-rails', '~> 0.11.0'
 
+gem "paranoia", "~> 2.2" #软删除
+
 group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
