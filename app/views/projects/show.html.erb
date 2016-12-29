@@ -1,0 +1,11 @@
+<h1>任务</h1>
+
+<ul>
+  <% if @todos.each do |todo| %>
+    <%= render 'todo', todo: todo %>
+  <% end.empty? %>
+    <p> 还没有任务 ... </p>
+  <% end %>
+</ul>
+
+<%= link_to '创建一个 todo', new_project_todo_path(@project) %>
