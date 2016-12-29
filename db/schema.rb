@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228091436) do
+ActiveRecord::Schema.define(version: 20161229024807) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer  "project_id"
@@ -62,16 +62,14 @@ ActiveRecord::Schema.define(version: 20161228091436) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "name"
-    t.integer  "todo_list_id"
     t.integer  "due_at"
-    t.boolean  "is_complete",  default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "is_complete", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "assignee_id"
     t.integer  "project_id"
     t.index ["assignee_id"], name: "index_todos_on_assignee_id"
     t.index ["project_id"], name: "index_todos_on_project_id"
-    t.index ["todo_list_id"], name: "index_todos_on_todo_list_id"
   end
 
   create_table "users", force: :cascade do |t|
