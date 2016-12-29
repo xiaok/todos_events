@@ -1,0 +1,7 @@
+<li>
+  <%= todo.is_complete ? '√' : 'x' %>
+  <%= link_to todo.name, project_todo_path(@project) %>
+  <%= todo.assignee ? todo.assignee.name : '未指派' %>
+  <%= todo.due_at %>
+  <%= link_to '编辑', edit_project_todo_path(@project) %>
+</li>

@@ -42,6 +42,8 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
 
+  gem 'foreman'
+
   gem 'rspec-rails'
   gem 'factory_girl_rails', '4.7.0'
   gem 'database_cleaner', '1.5.1'
