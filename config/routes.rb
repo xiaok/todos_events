@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   resources :projects, only: [:show] do
     resources :todos
   end
+
+  resources :todos, only: [:show, :edit] do
+    resources :comment
+    post 'complete', to: 'todos#complete'
+  end
 end

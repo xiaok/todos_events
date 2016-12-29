@@ -1,7 +1,6 @@
-<li>
-  <%= todo.is_complete ? '√' : 'x' %>
-  <%= link_to todo.name, project_todo_path(@project) %>
-  <%= todo.assignee ? todo.assignee.name : '未指派' %>
-  <%= todo.due_at %>
-  <%= link_to '编辑', edit_project_todo_path(@project) %>
-</li>
+<%= todo.is_complete ? '√' : 'x' %>
+<%= link_to todo.name, todo_path %>
+<%= todo.assignee ? todo.assignee.name : '未指派' %>
+<%= todo.due_at %>
+<%= link_to '编辑', edit_todo_path %>
+<%= link_to '完成', todo_complete_path(todo), "data-remote": true, "data-method": "post" %>

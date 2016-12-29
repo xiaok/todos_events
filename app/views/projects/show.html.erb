@@ -2,7 +2,7 @@
 
 <ul>
   <% if @todos.each do |todo| %>
-    <%= render 'todo', todo: todo %>
+  <li><%= render 'todo', todo: todo %></li>
   <% end.empty? %>
     <p> 还没有任务 ... </p>
   <% end %>
