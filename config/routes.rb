@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams, only: [:show] do
-    resources :events, only: [:index]
+    get 'events', to: 'events#index'
+    get 'events/data', to: 'events#data'
   end
 end

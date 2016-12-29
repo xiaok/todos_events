@@ -48,8 +48,8 @@ class TodoUpdateService
     todo.create_event(
       'todo.update_due_at',
       current_user,
-      from: attributes_was['due_at'],
-      to: attributes_is['due_at']
+      from: attributes_was['due_at'] || '没有截止日期',
+      to: attributes_is['due_at'] || '没有截止日期'
     )
   end
 end
