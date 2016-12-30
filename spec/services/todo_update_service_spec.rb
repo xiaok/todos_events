@@ -41,7 +41,7 @@ RSpec.describe TodoUpdateService do
 
     context 'from null to due_at' do
       it "should create update_assign event" do
-        TodoUpdateService.new(@todo, { due_at: Time.now.to_i }, @user).process
+        TodoUpdateService.new(@todo, { due_at: Time.now }, @user).process
 
         event = Event.last
         expect(event.mode).to eq 'todo.update_due_at'
@@ -51,7 +51,7 @@ RSpec.describe TodoUpdateService do
     context 'from due_at to another due_at' do
       it "should create update_assign event" do
         @todo.update(due_at: Time.now.to_i)
-        TodoUpdateService.new(@todo, { due_at: (Time.now + 1.week).to_i }, @user).process
+        TodoUpdateService.new(@todo, { due_at: Time.now + 1.week }, @user).process
 
         event = Event.last
         expect(event.mode).to eq 'todo.update_due_at'
@@ -60,7 +60,7 @@ RSpec.describe TodoUpdateService do
 
     context 'from due_at to null' do
       it "should create update_assign event" do
-        @todo.update(due_at: Time.now.to_i)
+        @todo.update(due_at: Time.now)
         TodoUpdateService.new(@todo, { due_at: nil }, @user).process
 
         event = Event.last

@@ -1,8 +1,10 @@
 class Todo < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, required: true
   belongs_to :assignee, class_name: 'User'
   has_many :comments
   has_many :events, as: :eventable
+
+  validates :name, presence: true
 
   acts_as_paranoid
 

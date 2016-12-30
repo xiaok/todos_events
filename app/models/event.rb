@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   default_scope -> { order("created_at desc") }
-  belongs_to :user
-  belongs_to :project
-  belongs_to :eventable, polymorphic: true
+  belongs_to :user, required: true
+  belongs_to :project, required: true
+  belongs_to :eventable, polymorphic: true, required: true
 
   def eventable
     eventable_type.constantize.unscoped { super }
