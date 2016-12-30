@@ -10,8 +10,12 @@
   <% end %>
 </ul>
 
-<div> 添加评论：</div>
-<%= simple_form_for @todo.comments.new, url: todo_comments_path(@todo), remote: true do |f| %>
-  <%= f.input :content %>
-  <%= f.submit %>
+<% if @todo.deleted? %>
+  <p style="color: red">这是一个已经被删除的 todo</p>
+<% else %>
+  <div> 添加评论：</div>
+  <%= simple_form_for @todo.comments.new, url: todo_comments_path(@todo), remote: true do |f| %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
 <% end %>

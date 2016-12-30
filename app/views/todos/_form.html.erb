@@ -1,6 +1,6 @@
 <%= simple_form_for [@project, @todo] do |f| %>
   <%= f.input :name %>
   <%= f.association :assignee, collection: @todo.project.users %>
-  <%= f.input :due_at %>
+  <%= f.input :due_at, as: :date, html5: true%>
   <%= f.submit %>
 <% end %>

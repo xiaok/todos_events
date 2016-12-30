@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229024807) do
+ActiveRecord::Schema.define(version: 20161230042918) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer  "project_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161229024807) do
     t.string   "eventable_type"
     t.integer  "eventable_id"
     t.text     "extra"
-    t.string   "type"
+    t.string   "mode"
     t.integer  "user_id"
     t.integer  "project_id"
     t.datetime "created_at",     null: false
@@ -62,13 +62,15 @@ ActiveRecord::Schema.define(version: 20161229024807) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "name"
-    t.integer  "due_at"
+    t.datetime "due_at"
     t.boolean  "is_complete", default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "assignee_id"
     t.integer  "project_id"
+    t.datetime "deleted_at"
     t.index ["assignee_id"], name: "index_todos_on_assignee_id"
+    t.index ["deleted_at"], name: "index_todos_on_deleted_at"
     t.index ["project_id"], name: "index_todos_on_project_id"
   end
 

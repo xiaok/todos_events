@@ -1,0 +1,35 @@
+<div id="event-activity" @wheel="wheelEvent($event)" style="overflow: auto" v-cloak>
+  <h1>动态</h1>
+
+  <ul>
+    <li v-for="(event, index) in groupedEvents">
+      <div v-if="index === 0 || event.date !== events[index - 1].date">
+        {{ event.date }}
+        <hr />
+      </div>
+
+      <div v-if="index === 0 || event.project.id !== events[index - 1].project.id">
+        <a :href="`/projects/${event.project.id}`">{{ event.project.name }}</a>
+        <hr />
+      </div>
+      <p>
+        <span class="time">{{event.time}}</span>
+        <img :src="event.user.avatar_url" style="width: 30px; height: 30px">
+        <span class="username">{{event.user.name}} :</span>
+        <span class="action">{{event.action}}</span>
+        <a v-if="event.eventable_type === 'Todo'" :href="`/todos/${event.eventable_id}`">
+          {{event.extra.title}}
+        </a>
+        <span v-if="event.eventable_type === 'Comment'">
+          <a :href="`/todos/${event.extra.todo_id}`">
+            {{event.extra.title}}
+          </a>
+        </span>
+        <p v-if="event.eventable_type === 'Comment'"> {{event.extra.content}} </p>
+      </p>
+    </li>
+  </ul>
+
+  <div v-if="isLoading"> 正在加载... </div>
+  <div v-if="isEnd">  没有更多的动态了... </div>
+</div>

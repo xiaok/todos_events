@@ -2,6 +2,6 @@
   "name": "dsl-generated-dependencies",
   "dependencies": {
     "jquery-readyselector": "0.1.0",
-    "bootstrap-sass": "3.3.6"
+    "vue": "latest"
   }
 }

@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    model:
+      todo: 任务
+    attributes:
+      todo:
+        name: 任务
+        due_at: 完成时间
+        is_complete: 是否完成
+        assignee: 指派给
