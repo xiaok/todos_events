@@ -1,4 +1,7 @@
 $('.page_events').ready(function(){
+  // 因为 teams_controller 部分没有写，所以这里也就写死 url 了，见谅
+  let url = '/teams/1/events/data'
+
   new Vue({
     el: '#event-activity',
     data() {
@@ -14,7 +17,7 @@ $('.page_events').ready(function(){
       }
     },
     beforeCreate() {
-      $.getJSON('/teams/1/events/data')
+      $.getJSON(url)
         .then(data => {
           this.events = data
         })
@@ -24,7 +27,7 @@ $('.page_events').ready(function(){
         if (this.isEnd) return
         this.isLoading = true
         let events = this.events
-        $.getJSON('/teams/1/events/data', { till_id: events[events.length - 1].id})
+        $.getJSON(url, { till_id: events[events.length - 1].id})
           .then(data => {
             this.events.push(...data)
             this.isLoading = false
