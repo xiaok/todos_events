@@ -48,8 +48,13 @@ class TodoUpdateService
     todo.create_event(
       'todo.update_due_at',
       current_user,
-      from: attributes_was['due_at'] || '没有截止日期',
-      to: attributes_is['due_at'] || '没有截止日期'
+      from: format_due_at(attributes_was['due_at']),
+      to: format_due_at(attributes_is['due_at'])
     )
+  end
+
+  def format_due_at(date)
+    return "没有截止日期" unless date
+    date.strftime("%m-%d")
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229115152) do
+ActiveRecord::Schema.define(version: 20161230042918) do
 
   create_table "acccs", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20161229115152) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "name"
-    t.integer  "due_at"
+    t.datetime "due_at"
     t.boolean  "is_complete", default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

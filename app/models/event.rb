@@ -34,7 +34,6 @@ class Event < ApplicationRecord
     end
   end
 
-
   def to_hash
     {
       id: id,
@@ -43,6 +42,10 @@ class Event < ApplicationRecord
       eventable_id: eventable_id,
       extra: extra_json,
       mode: mode,
+      project: {
+        id: project.id,
+        name: project.name
+      },
       user: {
         id: user.id,
         name: user.name,

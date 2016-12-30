@@ -9,7 +9,8 @@ class Comment < ApplicationRecord
                     user: user,
                     extra: {
                       title: todo.name,
-                      content: content
+                      content: content,
+                      todo_id: todo.id
                     }.to_json
   end
 end

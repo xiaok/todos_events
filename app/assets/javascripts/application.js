@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-readyselector/jquery.readyselector
+//= require vue/dist/vue.min
+//= require date_format
+//= require event
